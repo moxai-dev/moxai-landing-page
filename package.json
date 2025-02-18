@@ -9,7 +9,7 @@
     "build-only": "vite build",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
-    "ghp-deploy": "run-p type-check \"build-only --base=/moxai-landing-page {@}\" -- || true && gh-pages -d dist",
+    "ghp-deploy": "(run-p type-check \"build-only --base=/moxai-landing-page {@}\" -- || true) && gh-pages -d dist",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
   },
