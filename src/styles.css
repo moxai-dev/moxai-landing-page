@@ -1,1 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import 'tailwindcss';
+
+@theme {
+  --font-title: 'Comfortaa', 'sans-serif';
+  --font-inter: 'Inter', 'sans-serif';
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .border-gradient {
+    background:
+      linear-gradient(var(--color-neutral-50), var(--color-neutral-50)) padding-box,
+      linear-gradient(45deg, var(--color-emerald-500), var(--color-sky-600)) border-box;
+    border: 2px solid transparent;
+    &:hover {
+      @media (hover: hover) {
+        background:
+          linear-gradient(var(--color-neutral-200), var(--color-neutral-200)) padding-box,
+          linear-gradient(45deg, var(--color-emerald-500), var(--color-sky-600)) border-box;
+      }
+    }
+  }
+}

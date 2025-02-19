@@ -1,47 +1,13 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import TheHeader from '@/components/TheHeader.vue'
+import TheHeroSection from '@/components/TheHeroSection.vue'
+import TheProblemSection from '@/components/TheProblemSection.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper bg-emerald-600/60 hover:bg-emerald-300">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
+  <TheHeader class="mb-10 px-3" />
   <main>
-    <TheWelcome />
+    <TheHeroSection class="mb-20 px-3" />
+    <TheProblemSection class="px-3" />
   </main>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
