@@ -4,6 +4,14 @@ import Drawer from 'primevue/drawer'
 import MoxaiLogoIcon from '@/components/icons/MoxaiLogoIcon.vue'
 
 const visible = ref(false)
+
+const openDrawer = () => {
+  visible.value = true
+}
+
+const closeDrawer = () => {
+  visible.value = false
+}
 </script>
 
 <template>
@@ -12,12 +20,11 @@ const visible = ref(false)
     <span class="font-title mr-auto text-3xl">MOXAI</span>
 
     <Drawer v-model:visible="visible" position="right" header="Drawer">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat.
-      </p>
+      <div class="flex flex-col gap-y-5">
+        <a href="#problem" @click="closeDrawer">О проблеме</a>
+        <a href="#solution" @click="closeDrawer">Наше решение</a>
+      </div>
     </Drawer>
-    <i @click="visible = true" class="pi pi-bars text-4xl text-emerald-600"></i>
+    <i @click="openDrawer" class="pi pi-bars text-4xl text-emerald-600"></i>
   </header>
 </template>
