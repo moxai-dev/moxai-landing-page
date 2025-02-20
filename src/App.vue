@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TheHeader from '@/components/TheHeader.vue'
-import TheHeroSection from '@/components/TheHeroSection.vue'
-import TheProblemSection from '@/components/TheProblemSection.vue'
+import TheHeader from '@/components/sections/TheHeader.vue'
+import TheHeroSection from '@/components/sections/TheHeroSection.vue'
+import TheProblemSection from '@/components/sections/TheProblemSection.vue'
 </script>
 
 <template>
