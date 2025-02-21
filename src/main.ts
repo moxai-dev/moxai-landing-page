@@ -9,7 +9,10 @@ import { ru as primeVueLocaleRu } from 'primelocale/ru.json'
 const app = createApp(App)
 
 app.use(PrimeVue, {
-  theme: { preset: Aura },
+  theme: {
+    preset: Aura,
+    options: { darkModeSelector: '.dark' },
+  },
   locale: { ...primeVueLocaleRu },
 })
 
