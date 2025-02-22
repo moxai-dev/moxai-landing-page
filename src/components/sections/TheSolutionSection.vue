@@ -35,7 +35,7 @@ const carouselData = [
 </script>
 
 <template>
-  <section class="relative">
+  <section class="relative mx-auto max-w-132">
     <AppAnchorLink id="solution" />
 
     <AppHeadingWithEmoji class="mb-6" :emojiSrc="clipboardEmoji" emojiAlt="clipboard emoji">
@@ -52,10 +52,12 @@ const carouselData = [
     >
       <template #item="{ data }">
         <div
-          class="mx-4 h-56 rounded-2xl border border-slate-200 bg-gradient-to-r from-emerald-500/5 to-lime-500/5 p-4"
+          class="mx-4 h-56 rounded-2xl border border-slate-200 bg-gradient-to-r from-emerald-500/5 to-lime-500/5 p-4 dark:border-slate-700 dark:from-emerald-300/5 dark:to-lime-300/5"
         >
           <div class="mb-4 flex items-center justify-between border-b-2 border-slate-200 pb-2">
-            <h3 class="max-w-40 text-lg font-semibold text-slate-800">{{ data.title }}</h3>
+            <h3 class="max-w-40 text-lg font-semibold text-slate-800 dark:text-slate-100">
+              {{ data.title }}
+            </h3>
             <div class="rounded-2xl bg-slate-800 p-4">
               <i class="pi !text-4xl text-white" :class="data.icon"></i>
             </div>

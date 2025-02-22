@@ -15,44 +15,54 @@ import moaiEmoji from '@/assets/moai-emoji.png'
 
     <Card class="!shadow-flat-danger mb-6">
       <template #title>
-        <span class="!text-lg !text-slate-800">Постоянные вопросы</span>
+        <h3 class="!text-lg !text-slate-800 dark:!text-slate-100">Постоянные вопросы</h3>
       </template>
       <template #content>
-        <p>Новички отвлекают опытных сотрудников от выполнения основных обязанностей.</p>
+        <p class="!text-slate-700 dark:!text-slate-200">
+          Новички отвлекают опытных сотрудников от выполнения основных обязанностей.
+        </p>
       </template>
     </Card>
 
     <Card class="!shadow-flat-danger mb-6">
       <template #title>
-        <span class="!text-lg !text-slate-800"> Разрозненные материалы </span>
+        <h3 class="!text-lg !text-slate-800 dark:!text-slate-100">Разрозненные материалы</h3>
       </template>
       <template #content>
-        Разбросаны по документам и файлам, что усложняет быстрый доступ к нужной информации
+        <p class="!text-slate-700 dark:!text-slate-200">
+          Разбросаны по документам и файлам, что усложняет быстрый доступ к нужной информации
+        </p>
       </template>
     </Card>
 
     <Card class="!shadow-flat-danger mb-6">
       <template #title>
-        <span class="!text-lg !text-slate-800"> Низкая вовлечённость </span>
+        <h3 class="!text-lg !text-slate-800 dark:!text-slate-100">Низкая вовлечённость</h3>
       </template>
       <template #content>
-        Очное обучение нередко сводится к однообразным занятиям, которые проводятся с одними и теми
-        же вопросами.
+        <p class="!text-slate-700 dark:!text-slate-200">
+          Очное обучение нередко сводится к однообразным занятиям, которые проводятся с одними и
+          теми же вопросами.
+        </p>
       </template>
     </Card>
 
     <Card class="!shadow-flat-danger mb-6">
       <template #title>
-        <span class="!text-lg !text-slate-800"> Мотиавция новичков </span>
+        <h3 class="!text-lg !text-slate-800 dark:!text-slate-100">Мотиавция новичков</h3>
       </template>
       <template #content>
-        Отсутствие интерактивных форматов и персонального подхода негативно сказывается на новых
-        сотрудниках
+        <p class="!text-slate-700 dark:!text-slate-200">
+          Отсутствие интерактивных форматов и персонального подхода негативно сказывается на новых
+          сотрудниках
+        </p>
       </template>
     </Card>
 
-    <div class="border-l-2 border-rose-700/40">
-      <h3 class="mb-1 pl-4 text-xl font-semibold text-slate-800">А что в итоге?</h3>
+    <div class="border-l-2 border-rose-700/40 dark:border-rose-300/40">
+      <h3 class="mb-1 pl-4 text-xl font-semibold text-slate-800 dark:text-slate-100">
+        А что в итоге?
+      </h3>
       <p class="mb-6 pl-4">
         Компания теряет драгоценное время, стакивается с путаницей в информации и плохой
         обучаемостью стажёров — всё это мешает эффективной адаптации персонала.

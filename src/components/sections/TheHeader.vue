@@ -48,14 +48,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <header class="flex min-h-16 items-center border-b-1 border-neutral-300/50 dark:bg-black">
-    <MoxaiLogoIcon class="mr-2 h-11 text-slate-800" />
+  <header class="flex min-h-16 items-center border-b-1 border-neutral-300/50">
+    <MoxaiLogoIcon class="mr-2 h-11 text-slate-800 dark:text-slate-100" />
     <span class="font-inter text-bold mr-auto text-3xl font-black">MOXAI</span>
 
     <i v-if="isDarkMode" class="pi pi-moon mr-8 !text-2xl" @click="setPreferableMode()"></i>
     <i v-else class="pi pi-sun mr-8 !text-2xl" @click="setPreferableMode()"></i>
 
-    <i class="pi pi-bars !text-2xl text-slate-800" @click="openDrawer"></i>
+    <i class="pi pi-bars !text-2xl text-slate-800 dark:text-slate-100" @click="openDrawer"></i>
 
     <Drawer v-model:visible="visible" position="right" header="Drawer">
       <div class="flex flex-col gap-y-5">
