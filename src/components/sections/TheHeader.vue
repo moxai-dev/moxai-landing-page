@@ -4,7 +4,11 @@ import Drawer from 'primevue/drawer'
 import MoxaiLogoIcon from '@/components/icons/MoxaiLogoIcon.vue'
 
 const visible = ref(false)
-const isDark = ref(window.matchMedia('(prefers-color-scheme: dark)').matches)
+
+const isPreferableDarkMode = localStorage.getItem('theme-mode') == 'dark'
+const isPreferableLightMode = localStorage.getItem('theme-mode') == 'light'
+const mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)')
+const isDarkMode = ref(!isPreferableLightMode && (mediaQueryList.matches || isPreferableDarkMode))
 
 const openDrawer = () => {
   visible.value = true
@@ -14,13 +18,32 @@ const closeDrawer = () => {
   visible.value = false
 }
 
-const toggleDark = () => {
+const toggleDarkMode = () => {
+  if (isPreferableDarkMode || isPreferableLightMode) {
+    return
+  }
+
   document.documentElement.classList.toggle('dark')
-  isDark.value = !isDark.value
+  isDarkMode.value = !isDarkMode.value
+}
+
+const setPreferableMode = () => {
+  document.documentElement.classList.toggle('dark')
+  isDarkMode.value = !isDarkMode.value
+
+  if (isDarkMode.value) {
+    localStorage.setItem('theme-mode', 'dark')
+  } else {
+    localStorage.setItem('theme-mode', 'light')
+  }
 }
 
 onMounted(() => {
-  // при открытии нужно включить ту тему, что у пользователя в системе
+  if (isDarkMode.value) {
+    document.documentElement.classList.add('dark')
+  }
+
+  mediaQueryList.onchange = toggleDarkMode
 })
 </script>
 
@@ -29,8 +52,8 @@ onMounted(() => {
     <MoxaiLogoIcon class="mr-2 h-11 text-slate-800" />
     <span class="font-inter text-bold mr-auto text-3xl font-black">MOXAI</span>
 
-    <i v-if="isDark" class="pi pi-moon mr-8 !text-2xl" @click="toggleDark()"></i>
-    <i v-else class="pi pi-sun mr-8 !text-2xl" @click="toggleDark()"></i>
+    <i v-if="isDarkMode" class="pi pi-moon mr-8 !text-2xl" @click="setPreferableMode()"></i>
+    <i v-else class="pi pi-sun mr-8 !text-2xl" @click="setPreferableMode()"></i>
 
     <i class="pi pi-bars !text-2xl text-slate-800" @click="openDrawer"></i>
 
