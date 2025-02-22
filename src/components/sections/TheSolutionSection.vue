@@ -1,7 +1,37 @@
 <script setup lang="ts">
+import Carousel from 'primevue/carousel'
 import AppAnchorLink from '@/components/AppAnchorLink.vue'
 import AppHeadingWithEmoji from '@/components/AppHeadingWithEmoji.vue'
 import clipboardEmoji from '@/assets/clipboard-emoji.png'
+
+const carouselData = [
+  {
+    title: 'Единая база знаний',
+    text: 'Все стандарты компании, регламенты и видеоуроки – в одном месте',
+    icon: 'pi-database',
+  },
+  {
+    title: 'Полная адаптация',
+    text: 'Подстраиваемся под специфику вашей компании (стандарты, стилистика)',
+    icon: 'pi-globe',
+  },
+  {
+    title: 'Автоматизация тестирования',
+    text: 'Удобные тесты и квизы, чтобы убедиться в понимании ключевых моментов сотрудниками',
+    icon: 'pi-check-square',
+  },
+  {
+    title: 'ИИ-помощник 24/7',
+    text: 'ИИ отвечает на вопросы стажёров в реальном времени, разгружая менеджеров и опытных сотрудников',
+    // заменить иконку на буквы AI
+    icon: 'pi-calendar-clock',
+  },
+  {
+    title: 'Лёгкая интеграция',
+    text: 'Готовое решение для обучения в Telegram – удобно, привычно, доступно',
+    icon: 'pi-telegram',
+  },
+]
 </script>
 
 <template>
@@ -12,37 +42,38 @@ import clipboardEmoji from '@/assets/clipboard-emoji.png'
       Наше решение для вашей проблемы
     </AppHeadingWithEmoji>
 
-    <h3 class="mb-6">Предлагаем платформу для обучения в Телеграм-боте</h3>
+    <Carousel
+      class="carousel mb-6"
+      circular
+      :showIndicators="false"
+      :value="carouselData"
+      :numVisible="1"
+      :numScroll="1"
+    >
+      <template #item="{ data }">
+        <div
+          class="mx-4 h-56 rounded-2xl border border-slate-200 bg-gradient-to-r from-emerald-500/5 to-lime-500/5 p-4"
+        >
+          <div class="mb-4 flex items-center justify-between border-b-2 border-slate-200 pb-2">
+            <h3 class="max-w-40 text-lg font-semibold text-slate-800">{{ data.title }}</h3>
+            <div class="rounded-2xl bg-slate-800 p-4">
+              <i class="pi !text-4xl text-white" :class="data.icon"></i>
+            </div>
+          </div>
 
-    <p class="mb-6">
-      <span class="font-semibold">Полная адаптация:</span>
-      Все стандарты ресторана, меню, регламенты и видеоуроки - в одном месте
-    </p>
+          <p>{{ data.text }}</p>
+        </div>
+      </template>
+    </Carousel>
 
-    <p class="mb-6">
-      <span class="font-semibold">Автоматизация тестирования:</span>
-      Подстраиваемся под специфику вашего заведения (меню, стандарты, стилистика)
-    </p>
-
-    <p class="mb-6">
-      <span class="font-semibold">Автоматизация тестирования:</span>
-      Удобные тесты и квизы, чтобы убедиться в понимании ключевых моментов сотрудниками
-    </p>
-
-    <p class="mb-6">
-      <span class="font-semibold">AI-помощник 24/7:</span>
-      ИИ отвечает на вопросы стажёров в реальном времени, разгружая менеджеров и опытных сотрудников
-    </p>
-
-    <p class="mb-6">
-      <span class="font-semibold">Лёгкая интеграция:</span>
-      Готовое решение для обучения в Telegram удобно, привычно, доступно.
-    </p>
-
-    <p>
-      Telegram – это платформа, к которой у большинства сотрудников уже есть доступ. Не нужно
-      устанавливать дополнительные приложения или осваивать сложные интерфейсы – обучение проходит
-      прямо в привычном мессенджере, доступном на любом устройстве в любое время.
-    </p>
+    <p>Предлагаем реализацию в виде Телеграм-бота или TMA (Telegram Mini App)</p>
   </section>
 </template>
+
+<style scoped>
+.carousel {
+  --p-button-icon-only-width: 1.5rem;
+  --p-button-padding-y: 0;
+  --p-button-padding-x: 0;
+}
+</style>
