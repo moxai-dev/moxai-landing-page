@@ -13,7 +13,7 @@ import moaiEmoji from '@/assets/moai-emoji.png'
       Традиционные методы обучения больше не работают
     </AppHeadingWithEmoji>
 
-    <Card class="!shadow-flat-danger mb-6 !bg-red-400/10">
+    <Card class="!shadow-flat-danger mb-6">
       <template #title>
         <span class="!text-lg !text-slate-800">Постоянные вопросы</span>
       </template>
@@ -22,7 +22,7 @@ import moaiEmoji from '@/assets/moai-emoji.png'
       </template>
     </Card>
 
-    <Card class="!shadow-flat-danger mb-6 !bg-red-400/10">
+    <Card class="!shadow-flat-danger mb-6">
       <template #title>
         <span class="!text-lg !text-slate-800"> Разрозненные материалы </span>
       </template>
@@ -31,7 +31,7 @@ import moaiEmoji from '@/assets/moai-emoji.png'
       </template>
     </Card>
 
-    <Card class="!shadow-flat-danger mb-6 !bg-red-400/10">
+    <Card class="!shadow-flat-danger mb-6">
       <template #title>
         <span class="!text-lg !text-slate-800"> Низкая вовлечённость </span>
       </template>
@@ -41,7 +41,7 @@ import moaiEmoji from '@/assets/moai-emoji.png'
       </template>
     </Card>
 
-    <Card class="!shadow-flat-danger mb-6 !bg-red-400/10">
+    <Card class="!shadow-flat-danger mb-6">
       <template #title>
         <span class="!text-lg !text-slate-800"> Мотиавция новичков </span>
       </template>
@@ -51,10 +51,12 @@ import moaiEmoji from '@/assets/moai-emoji.png'
       </template>
     </Card>
 
-    <h3 class="mb-1 text-xl font-semibold text-slate-800">А что в итоге?</h3>
-    <p class="mb-6 border-l-2 border-red-400 pl-4">
-      Компания теряет драгоценное время, сталкивается с путаницей в информации и плохой обучаемостью
-      стажёров — всё это мешает эффективной адаптации персонала.
-    </p>
+    <div class="border-l-2 border-rose-700/40">
+      <h3 class="mb-1 pl-4 text-xl font-semibold text-slate-800">А что в итоге?</h3>
+      <p class="mb-6 pl-4">
+        Компания теряет драгоценное время, стакивается с путаницей в информации и плохой
+        обучаемостью стажёров — всё это мешает эффективной адаптации персонала.
+      </p>
+    </div>
   </section>
 </template>
