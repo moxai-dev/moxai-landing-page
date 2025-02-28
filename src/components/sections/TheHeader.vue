@@ -61,6 +61,7 @@ onMounted(() => {
       <div class="flex flex-col gap-y-5">
         <a href="#problem" @click="closeDrawer">О проблеме</a>
         <a href="#solution" @click="closeDrawer">Наше решение</a>
+        <a href="#how-it-works" @click="closeDrawer">Как это работает?</a>
       </div>
     </Drawer>
   </header>
