@@ -23,7 +23,7 @@
 
     <div class="flex flex-wrap-reverse items-center justify-center gap-x-6 gap-y-4">
       <a
-        class="flex items-center gap-x-2 rounded-md bg-emerald-500 px-3 py-2 text-white focus:ring-2 focus:ring-emerald-900 focus:outline-none dark:text-slate-200"
+        class="flex items-center gap-x-2 rounded-md bg-emerald-500 px-3 py-2 text-white focus:ring-2 focus:ring-emerald-900 focus:outline-none dark:bg-emerald-400 dark:text-zinc-900"
         href="#problem"
       >
         Ознакомиться
