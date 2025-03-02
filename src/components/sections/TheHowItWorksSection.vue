@@ -15,11 +15,11 @@ import Button from 'primevue/button'
   <section class="relative mx-auto max-w-132">
     <AppAnchorLink id="how-it-works" />
 
-    <AppHeadingWithEmoji class="mb-4" :emojiSrc="lightBulbEmoji" emojiAlt="light bulb emoji">
+    <AppHeadingWithEmoji class="mb-4 -ml-2" :emojiSrc="lightBulbEmoji" emojiAlt="light bulb emoji">
       Как это работает?
     </AppHeadingWithEmoji>
 
-    <h3 class="mb-4 pl-2">Всего 5 простых шагов</h3>
+    <h3 class="mb-4">Всего 5 простых шагов</h3>
 
     <Stepper class="stepper" value="1">
       <StepList>
@@ -42,6 +42,7 @@ import Button from 'primevue/button'
           </div>
           <div class="flex justify-end">
             <Button
+              class="touch-none"
               label="Вперед"
               icon="pi pi-arrow-right"
               iconPos="right"
@@ -62,12 +63,14 @@ import Button from 'primevue/button'
           </div>
           <div class="flex justify-end gap-x-4">
             <Button
+              class="touch-none"
               label="Назад"
               severity="secondary"
               icon="pi pi-arrow-left"
               @click="activateCallback('1')"
             />
             <Button
+              class="touch-none"
               label="Вперед"
               icon="pi pi-arrow-right"
               iconPos="right"
@@ -88,12 +91,14 @@ import Button from 'primevue/button'
           </div>
           <div class="flex justify-end gap-x-4">
             <Button
+              class="touch-none"
               label="Назад"
               severity="secondary"
               icon="pi pi-arrow-left"
               @click="activateCallback('2')"
             />
             <Button
+              class="touch-none"
               label="Вперед"
               icon="pi pi-arrow-right"
               iconPos="right"
@@ -114,12 +119,14 @@ import Button from 'primevue/button'
           </div>
           <div class="flex justify-end gap-x-4">
             <Button
+              class="touch-none"
               label="Назад"
               severity="secondary"
               icon="pi pi-arrow-left"
               @click="activateCallback('3')"
             />
             <Button
+              class="touch-none"
               label="Вперед"
               icon="pi pi-arrow-right"
               iconPos="right"
@@ -140,12 +147,14 @@ import Button from 'primevue/button'
           </div>
           <div class="flex justify-end gap-x-4">
             <Button
+              class="touch-none"
               label="Назад"
               severity="secondary"
               icon="pi pi-arrow-left"
               @click="activateCallback('4')"
             />
             <Button
+              class="touch-none"
               label="В начало"
               icon="pi pi-arrow-right"
               iconPos="right"
@@ -160,11 +169,12 @@ import Button from 'primevue/button'
 
 <style scoped>
 .stepper {
-  --p-stepper-steppanel-background: transparent !important;
-  --p-stepper-steppanel-color: var(--color-slate-700) !important;
+  --p-stepper-steppanel-background: transparent;
+  --p-stepper-steppanel-color: var(--color-slate-700);
+  --p-stepper-steppanels-padding: calc(var(--spacing) * 4) 0 0 0;
 }
 
 .dark .stepper {
-  --p-stepper-steppanel-color: var(--color-slate-200) !important;
+  --p-stepper-steppanel-color: var(--color-slate-200);
 }
 </style>
