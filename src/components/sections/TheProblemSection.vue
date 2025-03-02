@@ -9,7 +9,12 @@ import moaiEmoji from '@/assets/moai-emoji.png'
   <section class="relative mx-auto max-w-132">
     <AppAnchorLink id="problem" />
 
-    <AppHeadingWithEmoji class="mb-6" :emojiSrc="moaiEmoji" emojiAlt="moai emoji">
+    <AppHeadingWithEmoji
+      class="mb-6"
+      :emojiSrc="moaiEmoji"
+      emojiClasses="scale-x-[-1]"
+      emojiAlt="moai emoji"
+    >
       Традиционные методы обучения больше не работают
     </AppHeadingWithEmoji>
 
