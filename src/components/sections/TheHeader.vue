@@ -62,6 +62,7 @@ onMounted(() => {
         <a href="#problem" @click="closeDrawer">О проблеме</a>
         <a href="#solution" @click="closeDrawer">Наше решение</a>
         <a href="#how-it-works" @click="closeDrawer">Как это работает?</a>
+        <a href="#examples" @click="closeDrawer">Примеры</a>
       </div>
     </Drawer>
   </header>

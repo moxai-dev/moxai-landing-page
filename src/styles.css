@@ -6,6 +6,8 @@
 @theme {
   --font-title: 'Comfortaa', 'sans-serif';
   --font-inter: 'Inter', 'sans-serif';
+
+  --breakpoint-xs: 24rem;
 }
 
 @layer components {
