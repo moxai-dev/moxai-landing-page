@@ -8,6 +8,14 @@ import TabList from 'primevue/tablist'
 import Tab from 'primevue/tab'
 import TabPanels from 'primevue/tabpanels'
 import TabPanel from 'primevue/tabpanel'
+
+enum ExampleTabs {
+  Functional,
+  Menu,
+  Question,
+  Test,
+  AI,
+}
 </script>
 
 <template>
@@ -22,24 +30,29 @@ import TabPanel from 'primevue/tabpanel'
 
     <h2 class="mb-4 text-center text-2xl font-semibold text-white">Примеры работы</h2>
 
-    <Tabs class="tabs" scrollable value="0">
+    <Tabs class="tabs" scrollable :value="ExampleTabs.Functional">
       <TabList
         pt:tabList:class="justify-between "
         pt:nextButton:class="!rounded-full"
         pt:prevButton:class="!rounded-full"
       >
-        <Tab value="0" pt:root:class="rounded-xl">Меню</Tab>
-        <Tab value="1" pt:root:class="rounded-xl">Вопросы</Tab>
-        <Tab value="2" pt:root:class="rounded-xl">Тесты</Tab>
-        <Tab value="3" pt:root:class="rounded-xl">ИИ</Tab>
+        <Tab :value="ExampleTabs.Functional" pt:root:class="rounded-xl">Функционал</Tab>
+        <Tab :value="ExampleTabs.Menu" pt:root:class="rounded-xl">Меню</Tab>
+        <Tab :value="ExampleTabs.Question" pt:root:class="rounded-xl">Вопросы</Tab>
+        <Tab :value="ExampleTabs.Test" pt:root:class="rounded-xl">Тесты</Tab>
+        <Tab :value="ExampleTabs.AI" pt:root:class="rounded-xl">ИИ</Tab>
       </TabList>
 
       <TabPanels>
-        <TabPanel value="0">
+        <TabPanel :value="ExampleTabs.Functional">
           <div class="max-xs:flex-col relative flex gap-x-4 gap-y-3">
             <div class="max-xs:contents">
-              <h3 class="mb-3 text-xl font-semibold text-white">Быстрый доступ к меню</h3>
-              <p class="max-xs:order-1">Бот выдает описание блюд и особенности ингредиентов</p>
+              <h3 class="mb-3 text-xl font-semibold text-white">
+                Пример Telegram-бота для обучения
+              </h3>
+              <p class="max-xs:order-1">
+                Быстрый и удобный доступ к необходимой информации и полезным функциям.
+              </p>
             </div>
 
             <div class="relative shrink-0">
@@ -56,7 +69,7 @@ import TabPanel from 'primevue/tabpanel'
           </div>
         </TabPanel>
 
-        <TabPanel value="1">
+        <TabPanel :value="ExampleTabs.Menu">
           <div class="max-xs:flex-col relative flex gap-x-4 gap-y-3">
             <div class="max-xs:contents">
               <h3 class="mb-3 text-xl font-semibold text-white">Позиция из меню</h3>
@@ -79,7 +92,30 @@ import TabPanel from 'primevue/tabpanel'
           </div>
         </TabPanel>
 
-        <TabPanel value="2">
+        <TabPanel :value="ExampleTabs.Question">
+          <div class="max-xs:flex-col relative flex gap-x-4 gap-y-3">
+            <div class="max-xs:contents">
+              <h3 class="mb-3 text-xl font-semibold text-white">Ответы на частые вопросы</h3>
+              <p class="max-xs:order-1">
+                Как правильно подать блюдо или оформить заказ — всё в одном чате
+              </p>
+            </div>
+
+            <div class="relative shrink-0">
+              <img class="max-xs:w-52 xs:h-100 relative z-10" :src="iphoneFrame" alt="" />
+              <video
+                class="xs:h-[352px] absolute top-[26px] left-[10px] h-[372px]"
+                autoplay
+                loop
+                playsinline
+                muted
+                :src="menuExample"
+              ></video>
+            </div>
+          </div>
+        </TabPanel>
+
+        <TabPanel :value="ExampleTabs.Test">
           <div class="max-xs:flex-col relative flex gap-x-4 gap-y-3">
             <div class="max-xs:contents">
               <h3 class="mb-3 text-xl font-semibold text-white">Тестирование в реальном времени</h3>
@@ -103,7 +139,7 @@ import TabPanel from 'primevue/tabpanel'
           </div>
         </TabPanel>
 
-        <TabPanel value="3">
+        <TabPanel :value="ExampleTabs.AI">
           <div class="max-xs:flex-col relative flex gap-x-4 gap-y-3">
             <div class="max-xs:contents">
               <h3 class="mb-3 text-xl font-semibold text-white">Подсказки от AI</h3>
