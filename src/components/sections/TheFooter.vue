@@ -1,5 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <footer class="h-64 bg-black"></footer>
+  <footer class="flex min-h-20 items-center justify-center bg-black text-white">
+    <h2 class="text-lg">© MOXAI, 2025</h2>
+  </footer>
 </template>
