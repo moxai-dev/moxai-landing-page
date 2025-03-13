@@ -1,14 +1,13 @@
 <script setup lang="ts">
+import Stepper from 'primevue/stepper'
+import StepList from 'primevue/steplist'
+import Step from 'primevue/step'
+import StepPanels from 'primevue/steppanels'
+import StepPanel from 'primevue/steppanel'
+import Button from 'primevue/button'
 import AppAnchorLink from '@/components/AppAnchorLink.vue'
 import AppHeadingWithEmoji from '@/components/AppHeadingWithEmoji.vue'
 import lightBulbEmoji from '@/assets/light-bulb-emoji.png'
-
-import Stepper from 'primevue/stepper'
-import StepList from 'primevue/steplist'
-import StepPanels from 'primevue/steppanels'
-import Step from 'primevue/step'
-import StepPanel from 'primevue/steppanel'
-import Button from 'primevue/button'
 </script>
 
 <template>

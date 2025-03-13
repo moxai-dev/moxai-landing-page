@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import AppAnchorLink from '@/components/AppAnchorLink.vue'
 import AppHeadingWithEmoji from '@/components/AppHeadingWithEmoji.vue'
-import rocketEmoji from '@/assets/rocket-emoji.png'
 import ArrowDownIcon from '@/components/icons/ArrowDownIcon.vue'
+import rocketEmoji from '@/assets/rocket-emoji.png'
 </script>
 
 <template>

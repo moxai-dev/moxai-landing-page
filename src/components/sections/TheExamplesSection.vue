@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import AppAnchorLink from '@/components/AppAnchorLink.vue'
-import iphoneFrame from '@/assets/iphone-frame.png'
-import menuExample from '@/assets/menu-example.mp4'
-
 import Tabs from 'primevue/tabs'
 import TabList from 'primevue/tablist'
 import Tab from 'primevue/tab'
 import TabPanels from 'primevue/tabpanels'
 import TabPanel from 'primevue/tabpanel'
+import AppAnchorLink from '@/components/AppAnchorLink.vue'
+import iphoneFrame from '@/assets/iphone-frame.png'
+import menuExample from '@/assets/menu-example.mp4'
 
 enum ExampleTabs {
   Functional,

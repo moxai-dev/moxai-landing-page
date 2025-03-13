@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import AppAnchorLink from '@/components/AppAnchorLink.vue'
 import AppHeadingWithEmoji from '@/components/AppHeadingWithEmoji.vue'
+import QuoteIcon from '@/components/icons/QuoteIcon.vue'
 import goldMedalEmoji from '@/assets/gold-medal.png'
 import hivLogo from '@/assets/hiv-logo.jpg'
-import QuoteIcon from '@/components/icons/QuoteIcon.vue'
 </script>
 
 <template>

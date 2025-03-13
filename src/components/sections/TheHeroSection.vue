@@ -1,7 +1,3 @@
-<script setup lang="ts">
-// import rocketEmoji from '@/assets/rocket-emoji.png'
-</script>
-
 <template>
   <section>
     <!-- <img class="absolute -top-4 right-px -z-10 h-40" :src="rocketEmoji" alt="" /> -->

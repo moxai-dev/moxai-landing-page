@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import InputText from 'primevue/inputtext'
 import Textarea from 'primevue/textarea'
 import Button from 'primevue/button'
 import AppAnchorLink from '@/components/AppAnchorLink.vue'
-import { ref } from 'vue'
 
 const name = ref()
 const contact = ref()
