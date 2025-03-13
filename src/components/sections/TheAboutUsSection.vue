@@ -17,7 +17,7 @@ import magnifyingGlassEmoji from '@/assets/magnifying-glass-tilted-right.png'
       О нас
     </AppHeadingWithEmoji>
 
-    <Card>
+    <Card class="card">
       <template #content>
         <p class="text-lg !text-slate-700 dark:!text-slate-200">
           Наша команда обладает более чем 3-летним опытом работы в ресторанной сфере, что позволило
@@ -34,3 +34,9 @@ import magnifyingGlassEmoji from '@/assets/magnifying-glass-tilted-right.png'
     </Card>
   </section>
 </template>
+
+<style scoped>
+.dark .card {
+  --p-card-background: var(--color-neutral-800);
+}
+</style>

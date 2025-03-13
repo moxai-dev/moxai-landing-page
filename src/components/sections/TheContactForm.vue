@@ -48,7 +48,15 @@ const additionalInfo = ref()
 <style scoped>
 .form {
   --p-inputtext-border-color: var(--color-neutral-700);
+  --p-inputtext-color: var(--color-slate-700);
+  --p-inputtext-background: var(--color-white);
+
   --p-textarea-border-color: var(--color-neutral-700);
+  --p-textarea-color: var(--color-slate-700);
+  --p-textarea-background: var(--color-white);
+
   --p-button-contrast-background: var(--color-black);
+  --p-button-contrast-border-color: var(--color-neutral-900);
+  --p-button-contrast-color: var(--color-slate-100);
 }
 </style>

@@ -18,7 +18,7 @@ import moaiEmoji from '@/assets/moai-emoji.png'
       Традиционные методы обучения больше не работают
     </AppHeadingWithEmoji>
 
-    <Card class="!shadow-flat-danger mb-6">
+    <Card class="card !shadow-flat-danger mb-6">
       <template #title>
         <h3 class="!text-lg !text-slate-800 dark:!text-slate-100">Постоянные вопросы</h3>
       </template>
@@ -29,7 +29,7 @@ import moaiEmoji from '@/assets/moai-emoji.png'
       </template>
     </Card>
 
-    <Card class="!shadow-flat-danger mb-6">
+    <Card class="card !shadow-flat-danger mb-6">
       <template #title>
         <h3 class="!text-lg !text-slate-800 dark:!text-slate-100">Разрозненные материалы</h3>
       </template>
@@ -40,7 +40,7 @@ import moaiEmoji from '@/assets/moai-emoji.png'
       </template>
     </Card>
 
-    <Card class="!shadow-flat-danger mb-6">
+    <Card class="card !shadow-flat-danger mb-6">
       <template #title>
         <h3 class="!text-lg !text-slate-800 dark:!text-slate-100">Низкая вовлечённость</h3>
       </template>
@@ -52,7 +52,7 @@ import moaiEmoji from '@/assets/moai-emoji.png'
       </template>
     </Card>
 
-    <Card class="!shadow-flat-danger mb-6">
+    <Card class="card !shadow-flat-danger mb-6">
       <template #title>
         <h3 class="!text-lg !text-slate-800 dark:!text-slate-100">Мотиавция новичков</h3>
       </template>
@@ -75,3 +75,9 @@ import moaiEmoji from '@/assets/moai-emoji.png'
     </div>
   </section>
 </template>
+
+<style scoped>
+.dark .card {
+  --p-card-background: var(--color-neutral-800);
+}
+</style>

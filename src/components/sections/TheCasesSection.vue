@@ -15,10 +15,13 @@ import QuoteIcon from '@/components/icons/QuoteIcon.vue'
     </AppHeadingWithEmoji>
 
     <p class="relative mb-4 pl-15 text-xl">
-      <QuoteIcon class="absolute -top-4 left-0 size-12 opacity-20" />
+      <QuoteIcon
+        class="absolute -top-4 left-0 size-12 opacity-20 dark:text-slate-100 dark:opacity-100"
+      />
       После внедрения системы
-      <span class="font-semibold">время адаптации новичков сократилось на 30%</span>, а у
-      наставников появилась возможность уделять больше времени гостям. Благодаря удобному
+      <span class="font-semibold text-slate-800 dark:text-slate-100">
+        время адаптации новичков сократилось на 30%</span
+      >, а у наставников появилась возможность уделять больше времени гостям. Благодаря удобному
       Telegram-боту, сотрудники могут оперативно находить нужную информацию, повышая качество
       обслуживания гостей.
     </p>

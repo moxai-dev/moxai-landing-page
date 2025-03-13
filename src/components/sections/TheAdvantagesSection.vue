@@ -14,35 +14,39 @@ import ArrowDownIcon from '@/components/icons/ArrowDownIcon.vue'
     </AppHeadingWithEmoji>
 
     <div class="text-center">
-      <h4 class="text-lg font-semibold text-slate-800">Быстрая адаптация новых сотрудников</h4>
+      <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-100">
+        Быстрая адаптация новых сотрудников
+      </h4>
       <p>Сокращайте срок стажировки и ускоряйте выход на полную нагрузку</p>
     </div>
 
     <ArrowDownIcon class="mx-auto my-2 size-12"></ArrowDownIcon>
 
     <div class="text-center">
-      <h4 class="text-lg font-semibold text-slate-800">Экономия времени наставников</h4>
+      <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-100">
+        Экономия времени наставников
+      </h4>
       <p>Не нужно дублировать информацию каждому новичку</p>
     </div>
 
     <ArrowDownIcon class="mx-auto my-2 size-12"></ArrowDownIcon>
 
     <div class="text-center">
-      <h4 class="text-lg font-semibold text-slate-800">Сокращение ошибок</h4>
+      <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-100">Сокращение ошибок</h4>
       <p>Персонал получает точные, актуальные инструкции из проверенных источников</p>
     </div>
 
     <ArrowDownIcon class="mx-auto my-2 size-12"></ArrowDownIcon>
 
     <div class="text-center">
-      <h4 class="text-lg font-semibold text-slate-800">Рост мотивации</h4>
+      <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-100">Рост мотивации</h4>
       <p>Интерактивные форматы обучения повышают вовлечённость стажёров</p>
     </div>
 
     <ArrowDownIcon class="mx-auto my-2 size-12"></ArrowDownIcon>
 
     <div class="text-center">
-      <h4 class="text-lg font-semibold text-slate-800">Выгодно</h4>
+      <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-100">Выгодно</h4>
       <p>Бесплатное создание индивидуальной базовой версии</p>
     </div>
   </section>
