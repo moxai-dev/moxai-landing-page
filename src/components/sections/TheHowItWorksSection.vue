@@ -8,11 +8,65 @@ import Button from 'primevue/button'
 import AppAnchorLink from '@/components/AppAnchorLink.vue'
 import AppHeadingWithEmoji from '@/components/AppHeadingWithEmoji.vue'
 import lightBulbEmoji from '@/assets/light-bulb-emoji.png'
+import { AnchorLinkEnum } from '@/enums/AnchorLinkEnum'
+
+enum HowItWorksStepper {
+  Information = 1,
+  Settings,
+  Launch,
+  Testing,
+  Feedback,
+}
+
+interface StepData {
+  value: HowItWorksStepper
+}
+
+interface StepPanelData extends StepData {
+  title: string
+  text: string
+}
+
+const stepsData: StepData[] = [
+  { value: HowItWorksStepper.Information },
+  { value: HowItWorksStepper.Settings },
+  { value: HowItWorksStepper.Launch },
+  { value: HowItWorksStepper.Testing },
+  { value: HowItWorksStepper.Feedback },
+]
+
+const stepPanelsData: StepPanelData[] = [
+  {
+    value: HowItWorksStepper.Information,
+    title: 'Сбор информации',
+    text: 'Мы проанализируем специфику вашей компании, корпоративные стандарты, бизнес-процессы и ключевые знания, необходимые для сотрудников',
+  },
+  {
+    value: HowItWorksStepper.Settings,
+    title: 'Настройка бота и платформы',
+    text: 'Загружаем обучающие материалы, создаём интерактивные модули, тесты и сценарии взаимодействия',
+  },
+  {
+    value: HowItWorksStepper.Launch,
+    title: 'Запуск и обучение',
+    text: 'Сотрудники получают удобный доступ к Telegram-боту, где могут изучать информацию и проходить обучение в комфортном темпе',
+  },
+  {
+    value: HowItWorksStepper.Testing,
+    title: 'Контроль знаний',
+    text: 'Система автоматически отслеживает активность сотрудников, фиксирует результаты тестирования и формирует отчёты для руководителей',
+  },
+  {
+    value: HowItWorksStepper.Feedback,
+    title: 'Обратная связь и улучшения',
+    text: 'Мы регулярно обновляем контент, адаптируем систему под ваши задачи и вносим улучшения на основе отзывов пользователей',
+  },
+]
 </script>
 
 <template>
   <section class="relative mx-auto max-w-132">
-    <AppAnchorLink id="how-it-works" />
+    <AppAnchorLink :id="AnchorLinkEnum.HowItWorks" />
 
     <AppHeadingWithEmoji class="mb-4 -ml-2" :emojiSrc="lightBulbEmoji" emojiAlt="light bulb emoji">
       Как это работает?
@@ -20,144 +74,40 @@ import lightBulbEmoji from '@/assets/light-bulb-emoji.png'
 
     <h3 class="mb-4">Всего 5 простых шагов</h3>
 
-    <Stepper class="stepper" value="1">
+    <Stepper class="stepper" :value="HowItWorksStepper.Information">
       <StepList>
-        <Step value="1"></Step>
-        <Step value="2"></Step>
-        <Step value="3"></Step>
-        <Step value="4"></Step>
-        <Step value="5"></Step>
+        <Step v-for="step in stepsData" :value="step.value"></Step>
       </StepList>
+
       <StepPanels>
-        <StepPanel #="{ activateCallback }" value="1">
+        <StepPanel
+          v-for="(panel, index) in stepPanelsData"
+          #="{ activateCallback }"
+          :value="panel.value"
+          :key="panel.value"
+        >
           <div class="mb-4 flex flex-col gap-y-4">
             <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100">
-              Сбор информации
+              {{ panel.title }}
             </h3>
-            <p class="min-h-24">
-              Мы проанализируем специфику вашей компании, корпоративные стандарты, бизнес-процессы и
-              ключевые знания, необходимые для сотрудников.
-            </p>
+            <p class="min-h-24">{{ panel.text }}</p>
           </div>
-          <div class="flex justify-end">
-            <Button
-              class="touch-none"
-              label="Вперед"
-              icon="pi pi-arrow-right"
-              iconPos="right"
-              @click="activateCallback('2')"
-            />
-          </div>
-        </StepPanel>
 
-        <StepPanel #="{ activateCallback }" value="2">
-          <div class="mb-4 flex flex-col gap-y-4">
-            <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100">
-              Настройка бота и платформы
-            </h3>
-            <p class="min-h-24">
-              Загружаем обучающие материалы, создаём интерактивные модули, тесты и сценарии
-              взаимодействия.
-            </p>
-          </div>
           <div class="flex justify-end gap-x-4">
             <Button
+              v-if="index != 0"
               class="touch-none"
               label="Назад"
               severity="secondary"
               icon="pi pi-arrow-left"
-              @click="activateCallback('1')"
+              @click="activateCallback(panel.value - 1)"
             />
             <Button
               class="touch-none"
-              label="Вперед"
+              :label="index != stepPanelsData.length - 1 ? 'Вперед' : 'В начало'"
               icon="pi pi-arrow-right"
               iconPos="right"
-              @click="activateCallback('3')"
-            />
-          </div>
-        </StepPanel>
-
-        <StepPanel #="{ activateCallback }" value="3">
-          <div class="mb-4 flex flex-col gap-y-4">
-            <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100">
-              Запуск и обучение
-            </h3>
-            <p class="min-h-24">
-              Сотрудники получают удобный доступ к Telegram-боту, где могут изучать информацию и
-              проходить обучение в комфортном темпе.
-            </p>
-          </div>
-          <div class="flex justify-end gap-x-4">
-            <Button
-              class="touch-none"
-              label="Назад"
-              severity="secondary"
-              icon="pi pi-arrow-left"
-              @click="activateCallback('2')"
-            />
-            <Button
-              class="touch-none"
-              label="Вперед"
-              icon="pi pi-arrow-right"
-              iconPos="right"
-              @click="activateCallback('4')"
-            />
-          </div>
-        </StepPanel>
-
-        <StepPanel #="{ activateCallback }" value="4">
-          <div class="mb-4 flex flex-col gap-y-4">
-            <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100">
-              Контроль знаний
-            </h3>
-            <p class="min-h-24">
-              Система автоматически отслеживает активность сотрудников, фиксирует результаты
-              тестирования и формирует отчёты для руководителей.
-            </p>
-          </div>
-          <div class="flex justify-end gap-x-4">
-            <Button
-              class="touch-none"
-              label="Назад"
-              severity="secondary"
-              icon="pi pi-arrow-left"
-              @click="activateCallback('3')"
-            />
-            <Button
-              class="touch-none"
-              label="Вперед"
-              icon="pi pi-arrow-right"
-              iconPos="right"
-              @click="activateCallback('5')"
-            />
-          </div>
-        </StepPanel>
-
-        <StepPanel #="{ activateCallback }" value="5">
-          <div class="mb-4 flex flex-col gap-y-4">
-            <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100">
-              Обратная связь и улучшения
-            </h3>
-            <p class="min-h-24">
-              Мы регулярно обновляем контент, адаптируем систему под ваши задачи и вносим улучшения
-              на основе отзывов пользователей.
-            </p>
-          </div>
-          <div class="flex justify-end gap-x-4">
-            <Button
-              class="touch-none"
-              label="Назад"
-              severity="secondary"
-              icon="pi pi-arrow-left"
-              @click="activateCallback('4')"
-            />
-            <Button
-              class="touch-none"
-              label="В начало"
-              icon="pi pi-arrow-right"
-              iconPos="right"
-              @click="activateCallback('1')"
+              @click="activateCallback(index != stepPanelsData.length - 1 ? panel.value + 1 : 1)"
             />
           </div>
         </StepPanel>

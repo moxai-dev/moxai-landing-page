@@ -3,8 +3,15 @@ import Carousel from 'primevue/carousel'
 import AppAnchorLink from '@/components/AppAnchorLink.vue'
 import AppHeadingWithEmoji from '@/components/AppHeadingWithEmoji.vue'
 import clipboardEmoji from '@/assets/clipboard-emoji.png'
+import { AnchorLinkEnum } from '@/enums/AnchorLinkEnum'
 
-const carouselData = [
+interface CarouselCard {
+  title: string
+  text: string
+  icon: string
+}
+
+const carouselData: CarouselCard[] = [
   {
     title: 'Единая база знаний',
     text: 'Все стандарты компании, регламенты и видеоуроки – в одном месте',
@@ -23,7 +30,6 @@ const carouselData = [
   {
     title: 'ИИ-помощник 24/7',
     text: 'ИИ отвечает на вопросы стажёров в реальном времени, разгружая менеджеров и опытных сотрудников',
-    // заменить иконку на буквы AI
     icon: 'pi-calendar-clock',
   },
   {
@@ -36,7 +42,7 @@ const carouselData = [
 
 <template>
   <section class="relative mx-auto max-w-132">
-    <AppAnchorLink id="solution" />
+    <AppAnchorLink :id="AnchorLinkEnum.Solution" />
 
     <AppHeadingWithEmoji class="mb-6" :emojiSrc="clipboardEmoji" emojiAlt="clipboard emoji">
       Наше решение для вашей проблемы

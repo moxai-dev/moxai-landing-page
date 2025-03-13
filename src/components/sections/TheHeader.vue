@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import Drawer from 'primevue/drawer'
 import MoxaiLogoIcon from '@/components/icons/MoxaiLogoIcon.vue'
+import { AnchorLinkEnum } from '@/enums/AnchorLinkEnum'
 
 const isDrawerVisible = ref(false)
 
@@ -12,6 +13,22 @@ const openDrawer = () => {
 const closeDrawer = () => {
   isDrawerVisible.value = false
 }
+
+interface Link {
+  text: string
+  to: AnchorLinkEnum
+}
+
+const links: Link[] = [
+  { text: 'О проблеме', to: AnchorLinkEnum.Problem },
+  { text: 'Наше решение', to: AnchorLinkEnum.Solution },
+  { text: 'Как это работает?', to: AnchorLinkEnum.HowItWorks },
+  { text: 'Примеры', to: AnchorLinkEnum.Examples },
+  { text: 'Приемущества', to: AnchorLinkEnum.Advantages },
+  { text: 'Кейсы', to: AnchorLinkEnum.Cases },
+  { text: 'О нас', to: AnchorLinkEnum.AboutUs },
+  { text: 'Оставить заявку', to: AnchorLinkEnum.ContactForm },
+]
 
 const isPreferableDarkMode = localStorage.getItem('theme-mode') == 'dark'
 const isPreferableLightMode = localStorage.getItem('theme-mode') == 'light'
@@ -59,14 +76,9 @@ onMounted(() => {
 
     <Drawer v-model:visible="isDrawerVisible" position="right" header="Меню">
       <div class="flex flex-col gap-y-5">
-        <a href="#problem" @click="closeDrawer">О проблеме</a>
-        <a href="#solution" @click="closeDrawer">Наше решение</a>
-        <a href="#how-it-works" @click="closeDrawer">Как это работает?</a>
-        <a href="#examples" @click="closeDrawer">Примеры</a>
-        <a href="#advantages" @click="closeDrawer">Приемущества</a>
-        <a href="#cases" @click="closeDrawer">Кейсы</a>
-        <a href="#about-us" @click="closeDrawer">О нас</a>
-        <a href="#contact-form" @click="closeDrawer">Оставить заявку</a>
+        <a v-for="(link, index) in links" :href="'#' + link.to" :key="index" @click="closeDrawer">
+          {{ link.text }}
+        </a>
       </div>
     </Drawer>
   </header>

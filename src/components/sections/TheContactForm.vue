@@ -4,6 +4,7 @@ import InputText from 'primevue/inputtext'
 import Textarea from 'primevue/textarea'
 import Button from 'primevue/button'
 import AppAnchorLink from '@/components/AppAnchorLink.vue'
+import { AnchorLinkEnum } from '@/enums/AnchorLinkEnum'
 
 const name = ref()
 const contact = ref()
@@ -18,7 +19,7 @@ const additionalInfo = ref()
     <!-- :class="`bg-[url(${gradientBg})]`" -->
     <!-- <img class="absolute top-0 right-0 bottom-0 left-0 -z-10" :src="gradientBg" alt="" /> -->
 
-    <AppAnchorLink class="top-0" id="contact-form" />
+    <AppAnchorLink class="top-0" :id="AnchorLinkEnum.ContactForm" />
 
     <h2 class="mb-4 text-center text-2xl font-semibold text-white">
       Готовы выйти на новый уровень обучения персонала?

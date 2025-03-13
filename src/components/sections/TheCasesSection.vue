@@ -4,11 +4,12 @@ import AppHeadingWithEmoji from '@/components/AppHeadingWithEmoji.vue'
 import QuoteIcon from '@/components/icons/QuoteIcon.vue'
 import goldMedalEmoji from '@/assets/gold-medal.png'
 import hivLogo from '@/assets/hiv-logo.jpg'
+import { AnchorLinkEnum } from '@/enums/AnchorLinkEnum'
 </script>
 
 <template>
   <section class="relative mx-auto max-w-132">
-    <AppAnchorLink id="cases" />
+    <AppAnchorLink :id="AnchorLinkEnum.Cases" />
 
     <AppHeadingWithEmoji class="mb-6" :emojiSrc="goldMedalEmoji" emojiAlt="gold medal emoji">
       Кейсы

@@ -3,11 +3,12 @@ import Card from 'primevue/card'
 import AppAnchorLink from '@/components/AppAnchorLink.vue'
 import AppHeadingWithEmoji from '@/components/AppHeadingWithEmoji.vue'
 import magnifyingGlassEmoji from '@/assets/magnifying-glass-tilted-right.png'
+import { AnchorLinkEnum } from '@/enums/AnchorLinkEnum'
 </script>
 
 <template>
   <section class="relative mx-auto max-w-132">
-    <AppAnchorLink id="about-us" />
+    <AppAnchorLink :id="AnchorLinkEnum.AboutUs" />
 
     <AppHeadingWithEmoji
       class="mb-6"
