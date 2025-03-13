@@ -29,13 +29,12 @@
         Ознакомиться
         <i class="pi pi-arrow-down"></i>
       </a>
-      <button
-        class="border-gradient cursor-pointer rounded-md px-3 py-2 text-slate-800 focus:ring-2 focus:ring-emerald-600 focus:outline-none dark:text-slate-100"
-        type="button"
-        aria-label="Запросить демо"
+      <a
+        class="border-gradient rounded-md px-3 py-2 text-slate-800 focus:ring-2 focus:ring-emerald-600 focus:outline-none dark:text-slate-100"
+        href="#contact-form"
       >
         Запросить демо
-      </button>
+      </a>
     </div>
   </section>
 </template>
