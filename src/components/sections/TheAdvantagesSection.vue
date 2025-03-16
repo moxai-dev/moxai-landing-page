@@ -43,17 +43,14 @@ const advantages: Advantage[] = [
     </AppHeadingWithEmoji>
 
     <template v-for="(advantage, index) in advantages" :key="index">
-      <div class="text-center md:text-left">
+      <div class="text-center">
         <h4 class="text-lg font-semibold text-slate-800 md:mb-2 dark:text-slate-100">
           {{ advantage.title }}
         </h4>
         <p class="">{{ advantage.text }}</p>
       </div>
 
-      <ArrowDownIcon
-        v-if="index != advantages.length - 1"
-        class="mx-auto my-2 size-12 md:my-4 md:ml-4 md:size-16"
-      />
+      <ArrowDownIcon v-if="index != advantages.length - 1" class="mx-auto my-2 size-12" />
     </template>
   </section>
 </template>

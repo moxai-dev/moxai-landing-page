@@ -99,7 +99,7 @@ const tabPanelsData: TabPanelData[] = [
         <TabPanels>
           <TabPanel v-for="panel in tabPanelsData" :value="panel.value" :key="panel.value">
             <div class="max-xs:flex-col relative flex justify-between gap-x-4 gap-y-3">
-              <div class="max-xs:contents">
+              <div class="max-xs:contents md:mt-10">
                 <h3 class="mb-3 text-xl font-semibold text-white lg:text-2xl">
                   {{ panel.title }}
                 </h3>
