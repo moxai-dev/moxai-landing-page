@@ -70,55 +70,60 @@ const tabPanelsData: TabPanelData[] = [
 </script>
 
 <template>
-  <section
-    class="relative mx-auto max-w-132 bg-linear-65 from-emerald-500 from-40% to-lime-500 text-slate-100"
-  >
-    <!-- bg-gradient-to-r from-emerald-500 to-emerald-600 -->
-    <!-- :class="`bg-[url(${gradientBg})]`" -->
-    <!-- <img class="absolute top-0 right-0 bottom-0 left-0 -z-10" :src="gradientBg" alt="" /> -->
+  <section class="relative bg-linear-65 from-emerald-500 from-40% to-lime-500 text-slate-100">
+    <div class="mx-auto max-w-132 md:max-w-184 lg:max-w-236 xl:max-w-6xl">
+      <!-- bg-gradient-to-r from-emerald-500 to-emerald-600 -->
+      <!-- :class="`bg-[url(${gradientBg})]`" -->
+      <!-- <img class="absolute top-0 right-0 bottom-0 left-0 -z-10" :src="gradientBg" alt="" /> -->
 
-    <AppAnchorLink class="top-0" :id="AnchorLinkEnum.Examples" />
+      <AppAnchorLink class="top-0" :id="AnchorLinkEnum.Examples" />
 
-    <h2 class="mb-4 text-center text-2xl font-semibold text-white">Примеры работы</h2>
+      <h2 class="mb-4 text-center text-2xl font-semibold text-white lg:text-3xl">Примеры работы</h2>
 
-    <Tabs class="tabs" scrollable :value="ExampleTabs.Functional">
-      <TabList
-        pt:tabList:class="justify-between"
-        pt:nextButton:class="!rounded-full"
-        pt:prevButton:class="!rounded-full"
-      >
-        <Tab v-for="tab in tabsData" :value="tab.value" :key="tab.value" pt:root:class="rounded-xl">
-          {{ tab.text }}
-        </Tab>
-      </TabList>
+      <Tabs class="tabs" scrollable :value="ExampleTabs.Functional">
+        <TabList
+          pt:tabList:class="justify-between lg:justify-start lg:gap-x-8"
+          pt:nextButton:class="!rounded-full"
+          pt:prevButton:class="!rounded-full"
+        >
+          <Tab
+            v-for="tab in tabsData"
+            :value="tab.value"
+            :key="tab.value"
+            pt:root:class="rounded-xl"
+          >
+            {{ tab.text }}
+          </Tab>
+        </TabList>
 
-      <TabPanels>
-        <TabPanel v-for="panel in tabPanelsData" :value="panel.value" :key="panel.value">
-          <div class="max-xs:flex-col relative flex gap-x-4 gap-y-3">
-            <div class="max-xs:contents">
-              <h3 class="mb-3 text-xl font-semibold text-white">
-                {{ panel.title }}
-              </h3>
-              <p class="max-xs:order-1">
-                {{ panel.text }}
-              </p>
+        <TabPanels>
+          <TabPanel v-for="panel in tabPanelsData" :value="panel.value" :key="panel.value">
+            <div class="max-xs:flex-col relative flex justify-between gap-x-4 gap-y-3">
+              <div class="max-xs:contents">
+                <h3 class="mb-3 text-xl font-semibold text-white lg:text-2xl">
+                  {{ panel.title }}
+                </h3>
+                <p class="max-xs:order-1 lg:text-lg">
+                  {{ panel.text }}
+                </p>
+              </div>
+
+              <div class="relative shrink-0">
+                <img class="max-xs:w-52 relative z-10 h-100 md:h-132" :src="iphoneFrame" alt="" />
+                <video
+                  class="xs:h-[352px] absolute top-[26px] left-[10px] h-[372px]"
+                  autoplay
+                  loop
+                  playsinline
+                  muted
+                  :src="panel.videoSrc"
+                ></video>
+              </div>
             </div>
-
-            <div class="relative shrink-0">
-              <img class="max-xs:w-52 xs:h-100 relative z-10" :src="iphoneFrame" alt="" />
-              <video
-                class="xs:h-[352px] absolute top-[26px] left-[10px] h-[372px]"
-                autoplay
-                loop
-                playsinline
-                muted
-                :src="panel.videoSrc"
-              ></video>
-            </div>
-          </div>
-        </TabPanel>
-      </TabPanels>
-    </Tabs>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </div>
   </section>
 </template>
 

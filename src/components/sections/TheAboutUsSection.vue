@@ -7,7 +7,7 @@ import { AnchorLinkEnum } from '@/enums/AnchorLinkEnum'
 </script>
 
 <template>
-  <section class="relative mx-auto max-w-132">
+  <section class="relative mx-auto max-w-132 md:max-w-184 lg:max-w-236 xl:max-w-6xl">
     <AppAnchorLink :id="AnchorLinkEnum.AboutUs" />
 
     <AppHeadingWithEmoji

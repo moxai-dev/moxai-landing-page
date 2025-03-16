@@ -65,7 +65,7 @@ const stepPanelsData: StepPanelData[] = [
 </script>
 
 <template>
-  <section class="relative mx-auto max-w-132">
+  <section class="relative mx-auto max-w-132 md:max-w-184 lg:max-w-236 xl:max-w-6xl">
     <AppAnchorLink :id="AnchorLinkEnum.HowItWorks" />
 
     <AppHeadingWithEmoji class="mb-4 -ml-2" :emojiSrc="lightBulbEmoji" emojiAlt="light bulb emoji">
@@ -76,7 +76,7 @@ const stepPanelsData: StepPanelData[] = [
 
     <Stepper class="stepper" :value="HowItWorksStepper.Information">
       <StepList>
-        <Step v-for="step in stepsData" :value="step.value"></Step>
+        <Step v-for="step in stepsData" :value="step.value" :key="step.value"></Step>
       </StepList>
 
       <StepPanels>
@@ -86,14 +86,14 @@ const stepPanelsData: StepPanelData[] = [
           :value="panel.value"
           :key="panel.value"
         >
-          <div class="mb-4 flex flex-col gap-y-4">
+          <div class="mb-4 flex max-w-132 flex-col gap-y-4">
             <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100">
               {{ panel.title }}
             </h3>
             <p class="min-h-24">{{ panel.text }}</p>
           </div>
 
-          <div class="flex justify-end gap-x-4">
+          <div class="flex justify-end gap-x-4 lg:justify-start">
             <Button
               v-if="index != 0"
               class="touch-none"

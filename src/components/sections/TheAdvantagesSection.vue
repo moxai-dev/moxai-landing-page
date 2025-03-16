@@ -35,7 +35,7 @@ const advantages: Advantage[] = [
 </script>
 
 <template>
-  <section class="relative mx-auto max-w-132">
+  <section class="relative mx-auto max-w-132 md:max-w-184 lg:max-w-236 xl:max-w-6xl">
     <AppAnchorLink :id="AnchorLinkEnum.Advantages" />
 
     <AppHeadingWithEmoji class="mb-6" :emojiSrc="rocketEmoji" emojiAlt="rocket emoji">
@@ -43,14 +43,17 @@ const advantages: Advantage[] = [
     </AppHeadingWithEmoji>
 
     <template v-for="(advantage, index) in advantages" :key="index">
-      <div class="text-center">
-        <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-100">
+      <div class="text-center md:text-left">
+        <h4 class="text-lg font-semibold text-slate-800 md:mb-2 dark:text-slate-100">
           {{ advantage.title }}
         </h4>
-        <p>{{ advantage.text }}</p>
+        <p class="">{{ advantage.text }}</p>
       </div>
 
-      <ArrowDownIcon v-if="index != advantages.length - 1" class="mx-auto my-2 size-12" />
+      <ArrowDownIcon
+        v-if="index != advantages.length - 1"
+        class="mx-auto my-2 size-12 md:my-4 md:ml-4 md:size-16"
+      />
     </template>
   </section>
 </template>

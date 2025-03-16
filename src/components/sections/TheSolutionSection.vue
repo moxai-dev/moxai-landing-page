@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Carousel from 'primevue/carousel'
+import Carousel, { type CarouselResponsiveOptions } from 'primevue/carousel'
 import AppAnchorLink from '@/components/AppAnchorLink.vue'
 import AppHeadingWithEmoji from '@/components/AppHeadingWithEmoji.vue'
 import clipboardEmoji from '@/assets/clipboard-emoji.png'
@@ -38,10 +38,18 @@ const carouselData: CarouselCard[] = [
     icon: 'pi-telegram',
   },
 ]
+
+const responsiveOptions: CarouselResponsiveOptions[] = [
+  {
+    breakpoint: '1024px',
+    numScroll: 1,
+    numVisible: 1,
+  },
+]
 </script>
 
 <template>
-  <section class="relative mx-auto max-w-132">
+  <section class="relative mx-auto max-w-132 md:max-w-184 lg:max-w-236 xl:max-w-6xl">
     <AppAnchorLink :id="AnchorLinkEnum.Solution" />
 
     <AppHeadingWithEmoji class="mb-6" :emojiSrc="clipboardEmoji" emojiAlt="clipboard emoji">
@@ -53,8 +61,9 @@ const carouselData: CarouselCard[] = [
       circular
       :showIndicators="false"
       :value="carouselData"
-      :numVisible="1"
+      :numVisible="2"
       :numScroll="1"
+      :responsiveOptions="responsiveOptions"
     >
       <template #item="{ data }">
         <div

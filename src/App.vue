@@ -13,16 +13,16 @@ import TheFooter from '@/components/sections/TheFooter.vue'
 </script>
 
 <template>
-  <TheHeader class="mb-16 px-3" />
+  <TheHeader class="mb-16 px-3 lg:mb-20 xl:mb-24" />
   <main>
-    <TheHeroSection class="mb-16 px-3" />
-    <TheProblemSection class="mb-16 px-3" />
-    <TheSolutionSection class="mb-16 px-3" />
-    <TheHowItWorksSection class="mb-16 px-3" />
+    <TheHeroSection class="mb-16 px-3 lg:mb-20 xl:mb-24" />
+    <TheProblemSection class="mb-16 px-3 lg:mb-20 xl:mb-24" />
+    <TheSolutionSection class="mb-16 px-3 lg:mb-20 xl:mb-24" />
+    <TheHowItWorksSection class="mb-16 px-3 lg:mb-20 xl:mb-24" />
     <TheExamplesSection class="px-3 py-6" />
-    <TheAdvantagesSection class="mt-10 mb-16 px-3" />
-    <TheCasesSection class="mb-16 px-3" />
-    <TheAboutUsSection class="mb-16 px-3" />
+    <TheAdvantagesSection class="mt-10 mb-16 px-3 lg:mt-14 lg:mb-20 xl:mt-18 xl:mb-24" />
+    <TheCasesSection class="mb-16 px-3 lg:mb-20 xl:mb-24" />
+    <TheAboutUsSection class="mb-16 px-3 lg:mb-20 xl:mb-24" />
     <TheContactForm class="px-3 py-6" />
   </main>
   <TheFooter />

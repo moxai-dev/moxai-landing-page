@@ -8,14 +8,18 @@ import { AnchorLinkEnum } from '@/enums/AnchorLinkEnum'
 </script>
 
 <template>
-  <section class="relative mx-auto max-w-132">
+  <section class="relative mx-auto max-w-132 md:max-w-184 lg:max-w-236 xl:max-w-6xl">
     <AppAnchorLink :id="AnchorLinkEnum.Cases" />
 
-    <AppHeadingWithEmoji class="mb-6" :emojiSrc="goldMedalEmoji" emojiAlt="gold medal emoji">
+    <AppHeadingWithEmoji
+      class="mb-6 md:mb-8"
+      :emojiSrc="goldMedalEmoji"
+      emojiAlt="gold medal emoji"
+    >
       Кейсы
     </AppHeadingWithEmoji>
 
-    <p class="relative mb-4 pl-15 text-xl">
+    <p class="relative mb-4 pl-15 text-xl md:mb-8">
       <QuoteIcon
         class="absolute -top-4 left-0 size-12 opacity-20 dark:text-slate-100 dark:opacity-100"
       />

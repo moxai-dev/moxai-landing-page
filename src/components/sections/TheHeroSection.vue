@@ -6,7 +6,7 @@ import { AnchorLinkEnum } from '@/enums/AnchorLinkEnum'
   <section>
     <!-- <img class="absolute -top-4 right-px -z-10 h-40" :src="rocketEmoji" alt="" /> -->
     <div class="mx-auto max-w-96 text-center">
-      <h1 class="mb-4 text-3xl font-semibold text-slate-800 dark:text-slate-100">
+      <h1 class="mb-4 text-3xl font-semibold text-slate-800 md:text-4xl dark:text-slate-100">
         <span
           class="bg-gradient-to-r from-emerald-500 to-sky-600 bg-clip-text text-transparent dark:from-emerald-300 dark:to-sky-400"
         >

@@ -31,7 +31,7 @@ const problems: Problem[] = [
 </script>
 
 <template>
-  <section class="relative mx-auto max-w-132">
+  <section class="relative mx-auto max-w-132 md:max-w-184 lg:max-w-236 xl:max-w-6xl">
     <AppAnchorLink :id="AnchorLinkEnum.Problem" />
 
     <AppHeadingWithEmoji
@@ -43,14 +43,20 @@ const problems: Problem[] = [
       Традиционные методы обучения больше не работают
     </AppHeadingWithEmoji>
 
-    <Card v-for="(problem, index) in problems" class="card !shadow-flat-danger mb-6" :key="index">
-      <template #title>
-        <h3 class="!text-lg !text-slate-800 dark:!text-slate-100">{{ problem.title }}</h3>
-      </template>
-      <template #content>
-        <p class="!text-slate-700 dark:!text-slate-200">{{ problem.text }}</p>
-      </template>
-    </Card>
+    <div class="lg:mb-10 lg:grid lg:grid-cols-2 lg:gap-6">
+      <Card
+        v-for="(problem, index) in problems"
+        class="card !shadow-flat-danger mb-6 lg:mb-0"
+        :key="index"
+      >
+        <template #title>
+          <h3 class="!text-lg !text-slate-800 dark:!text-slate-100">{{ problem.title }}</h3>
+        </template>
+        <template #content>
+          <p class="!text-slate-700 dark:!text-slate-200">{{ problem.text }}</p>
+        </template>
+      </Card>
+    </div>
 
     <div class="border-l-2 border-rose-700/40 dark:border-rose-300/40">
       <h3 class="mb-1 pl-4 text-xl font-semibold text-slate-800 dark:text-slate-100">
