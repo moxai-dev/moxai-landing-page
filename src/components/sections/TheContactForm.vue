@@ -28,17 +28,17 @@ const additionalInfo = ref()
     <form action="" class="form mb-2 flex flex-col gap-y-8">
       <div class="flex max-w-5/6 flex-col gap-y-1">
         <label for="form-name" class="font-bold">Ваше имя *</label>
-        <InputText v-model="name" id="form-name" />
+        <InputText v-model="name" id="form-name" class="rounded-sm" />
       </div>
 
       <div class="flex max-w-5/6 flex-col gap-y-1">
         <label for="form-contact" class="font-bold">Контакт (номер, почта, ник в соцсети) *</label>
-        <InputText v-model="contact" id="form-contact" />
+        <InputText v-model="contact" id="form-contact" class="rounded-sm" />
       </div>
 
       <div class="flex flex-col gap-y-1">
         <p class="font-bold">Здесь можете задать вопросы или рассказать о своей компании</p>
-        <Textarea v-model="additionalInfo" class="min-h-42 resize-none" />
+        <Textarea v-model="additionalInfo" class="min-h-42 resize-none rounded-sm" />
       </div>
 
       <Button label="Оставить заявку" severity="contrast" type="submit" />
