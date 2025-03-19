@@ -9,6 +9,32 @@ import { AnchorLinkEnum } from '@/enums/AnchorLinkEnum'
 const name = ref()
 const contact = ref()
 const additionalInfo = ref()
+
+const sendForm = async () => {
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name.value,
+        contact: contact.value,
+        additionalInfo: additionalInfo.value,
+      }),
+    })
+
+    if (!response.ok) {
+      throw new Error('Ошибка при отправке запроса')
+    }
+
+    await response.json()
+    alert('Заявка успешно отправлена!')
+  } catch (error) {
+    console.error('Ошибка отправки заявки:', error)
+    alert('Произошла ошибка при отправке заявки.')
+  }
+}
 </script>
 
 <template>
@@ -24,7 +50,7 @@ const additionalInfo = ref()
         Готовы выйти на новый уровень обучения персонала?
       </h2>
 
-      <form action="" class="form mx-auto mb-2 flex max-w-184 flex-col gap-y-8">
+      <form @submit.prevent="sendForm" class="form mx-auto mb-2 flex max-w-184 flex-col gap-y-8">
         <div class="flex max-w-5/6 flex-col gap-y-1 md:w-3/5">
           <label for="form-name" class="font-bold">Ваше имя *</label>
           <InputText v-model="name" id="form-name" class="rounded-sm" />
