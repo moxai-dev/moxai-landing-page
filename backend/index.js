@@ -25,24 +25,30 @@ app.post("/api/contact", async (req, res) => {
   const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
   try {
-    for (let chatId of chatIds) {
-      const telegramResponse = await fetch(telegramUrl, {
+    const sendPromises = chatIds.map((chatId) =>
+      fetch(telegramUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           chat_id: chatId,
           text: message,
         }),
-      });
+      })
+    );
 
-      if (!telegramResponse.ok) {
-        throw new Error("Ошибка отправки сообщения в Telegram");
-      }
+    const results = await Promise.allSettled(sendPromises);
 
-      res.status(200).json({ message: "Сообщение успешно отправлено в Telegram" });
+    const atLeastOneSuccess = results.some((result) => {
+      return result.status === "fulfilled" && result.value.ok;
+    });
+
+    if (atLeastOneSuccess) {
+      return res.status(200).json({ message: "Форма успешно отправлена" });
+    } else {
+      return res.status(500).json({ error: "Форма не была отправлена" });
     }
   } catch (error) {
-    res.status(500).json({ error: "Ошибка отправки сообщения в Telegram" });
+    return res.status(500).json({ error: "Форма не была отправлена" });
   }
 });
 
