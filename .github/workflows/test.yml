@@ -24,7 +24,16 @@ jobs:
           npm ci
           npm run build
 
-      - name: multiple command
+      - name: copy file via ssh key
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "frontend/dist/index.html"
+          target: ${{ secrets.REMOTE_PATH }}
+
+      - name: single command
         uses: appleboy/ssh-action@v1.2.2
         env:
           WORKDIR_PATH: ${{ secrets.REMOTE_PATH }}
@@ -32,11 +41,8 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.PORT }}
           envs: WORKDIR_PATH
-          script: |
-            whoami
-            echo 'Test deployment triggered at $(date)' >> $WORKDIR_PATH/test.txt
+          script: echo 'Test deployment triggered at $(date)' >> $WORKDIR_PATH/test.txt
 
       # - name: Install SSH client
       #   run: |
