@@ -18,14 +18,21 @@ jobs:
         with:
           node-version: "20"
 
-      # - name: Build Frontend
-      #   working-directory: ./frontend
-      #   run: |
-      #     npm ci
-      #     npm run build
+      - name: Build Frontend
+        working-directory: ./frontend
+        run: |
+          npm ci
+          npm run build
 
       - name: create file
         run: echo 'aaa' > scp.txt
+
+      - name: logging
+        run: |
+          dir .
+          dir ./frontend
+          dir ./frontend/dist
+          dir ./frontend/build
 
       - name: copy file via ssh key
         uses: appleboy/scp-action@v0.1.7
