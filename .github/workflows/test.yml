@@ -1,4 +1,4 @@
-name: Test Deploy Workflow
+name: Deploy moxai.ru
 
 on:
   push:
@@ -6,33 +6,58 @@ on:
       - test-github-actions
 
 jobs:
-  test-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install SSH client
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y openssh-client
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
 
-      - name: Execute test command on remote server
+      - name: Build Frontend
+        working-directory: ./frontend
+        run: |
+          npm ci
+          npm run build
+
+      - name: multiple command
+        uses: appleboy/ssh-action@v1.2.2
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
-        run: |
-          # Сохранение приватного ключа в файл
-          echo "$SSH_PRIVATE_KEY" > private_key
-          chmod 600 private_key
+          WORKDIR_PATH: ${{ secrets.REMOTE_PATH }}
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          envs: WORKDIR_PATH
+          script: |
+            whoami
+            echo 'Test deployment triggered at $(date)' >> $REMOTE_PATH/test.txt
 
-          # Выполнение SSH-команды на удалённом сервере:
-          # Здесь создаётся или перезаписывается файл test.txt с тестовым сообщением,
-          # содержащим текущую дату и время.
-          ssh -i private_key -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "echo 'Test deployment triggered at $(date)' > $REMOTE_PATH/test.txt"
+      # - name: Install SSH client
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y openssh-client
 
-          # Удаление временного файла с ключом
-          rm private_key
+      # - name: Execute test command on remote server
+      #   env:
+      #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     REMOTE_USER: ${{ secrets.REMOTE_USER }}
+      #     REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+      #     REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
+      #   run: |
+      #     # Сохранение приватного ключа в файл
+      #     echo "$SSH_PRIVATE_KEY" > private_key
+      #     chmod 600 private_key
+
+      #     # Выполнение SSH-команды на удалённом сервере:
+      #     # Здесь создаётся или перезаписывается файл test.txt с тестовым сообщением,
+      #     # содержащим текущую дату и время.
+      #     ssh -i private_key -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "echo 'Test deployment triggered at $(date)' > $REMOTE_PATH/test.txt"
+
+      #     # Удаление временного файла с ключом
+      #     rm private_key
