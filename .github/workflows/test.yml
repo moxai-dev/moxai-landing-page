@@ -36,7 +36,7 @@ jobs:
           envs: WORKDIR_PATH
           script: |
             whoami
-            echo 'Test deployment triggered at $(date)' >> $REMOTE_PATH/test.txt
+            echo 'Test deployment triggered at $(date)' >> $WORKDIR_PATH/test.txt
 
       # - name: Install SSH client
       #   run: |
