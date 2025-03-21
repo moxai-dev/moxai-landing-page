@@ -18,34 +18,7 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Build Frontend
-        working-directory: ./frontend
-        run: |
-          npm ci
-          npm run build
-
-      - name: create file
-        run: echo 'bbb' > scp.txt
-
-      - name: logging
-        run: |
-          dir .
-          dir ./frontend
-          dir ./frontend/dist
-
-      - name: create file
-        run: echo '111' > ./frontend/dist/a.txt
-
-      - name: copy file via ssh key
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "scp.txt,./frontend/dist/a.txt"
-          target: ${{ secrets.REMOTE_PATH }}
-
-      - name: single command
+      - name: Clear previous builds
         uses: appleboy/ssh-action@v1.2.2
         env:
           WORKDIR_PATH: ${{ secrets.REMOTE_PATH }}
@@ -54,7 +27,49 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           envs: WORKDIR_PATH
-          script: echo 'Test deployment triggered at $(date)' >> $WORKDIR_PATH/test.txt
+          script: |
+            rm -rf $WORKDIR_PATH/backend
+            rm -rf $WORKDIR_PATH/frontend
+
+      - name: Build frontend
+        working-directory: ./frontend
+        run: |
+          npm ci
+          npm run build
+
+      - name: Build backend
+        working-directory: ./backend
+        run: |
+          npm ci
+
+      - name: Copy frontend to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "./frontend/*"
+          target: ${{ secrets.REMOTE_PATH }}
+
+      - name: Copy backend to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "./backend/*"
+          target: ${{ secrets.REMOTE_PATH }}
+
+      - name: Deploy backend
+        uses: appleboy/ssh-action@v1.2.2
+        env:
+          WORKDIR_PATH: ${{ secrets.REMOTE_PATH }}
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: WORKDIR_PATH
+          script: systemctl restart moxai_ru_backend.service
 
       # - name: Install SSH client
       #   run: |

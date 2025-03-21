@@ -11,6 +11,10 @@ const chatIds = [
   // process.env.TELEGRAM_CHAT_ID_3
 ];
 
+app.get("/", (req, res) => {
+  return res.status(200).send("ok");
+});
+
 app.post("/api/contact", async (req, res) => {
   const { name, contact, additionalInfo } = req.body;
 
