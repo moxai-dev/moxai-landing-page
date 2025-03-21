@@ -1,8 +1,38 @@
-name: TEST
-on: [commit]
+name: Test Deploy Workflow
+
+on:
+  push:
+    branches:
+      - test-github-actions
+
 jobs:
-  our-first-job:
+  test-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Run console log
-           run: echo "Hello GitHub Actions!" 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install SSH client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openssh-client
+
+      - name: Execute test command on remote server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
+        run: |
+          # Сохранение приватного ключа в файл
+          echo "$SSH_PRIVATE_KEY" > private_key
+          chmod 600 private_key
+
+          # Выполнение SSH-команды на удалённом сервере:
+          # Здесь создаётся или перезаписывается файл test.txt с тестовым сообщением,
+          # содержащим текущую дату и время.
+          ssh -i private_key -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "echo 'Test deployment triggered at $(date)' > $REMOTE_PATH/test.txt"
+
+          # Удаление временного файла с ключом
+          rm private_key
