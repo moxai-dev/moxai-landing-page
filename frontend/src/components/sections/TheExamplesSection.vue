@@ -6,7 +6,11 @@ import TabPanels from 'primevue/tabpanels'
 import TabPanel from 'primevue/tabpanel'
 import AppAnchorLink from '@/components/AppAnchorLink.vue'
 import iphoneFrame from '@/assets/iphone-frame.png'
-import menuExample from '@/assets/menu-example.mp4'
+import functionExample from '@/assets/example-functions.mp4'
+import menuExample from '@/assets/example-menu.mp4'
+import questionExample from '@/assets/example-question.mp4'
+import testExample from '@/assets/example-test.mp4'
+import aiExample from '@/assets/example-AI.mp4'
 import { AnchorLinkEnum } from '@/enums/AnchorLinkEnum'
 
 enum ExampleTabs {
@@ -40,7 +44,7 @@ const tabPanelsData: TabPanelData[] = [
     value: ExampleTabs.Functional,
     title: 'Пример Telegram-бота для обучения',
     text: 'Быстрый и удобный доступ к необходимой информации и полезным функциям',
-    videoSrc: menuExample,
+    videoSrc: functionExample,
   },
   {
     value: ExampleTabs.Menu,
@@ -52,19 +56,19 @@ const tabPanelsData: TabPanelData[] = [
     value: ExampleTabs.Question,
     title: 'Ответы на частые вопросы',
     text: 'Как правильно подать блюдо или оформить заказ — всё в одном чате',
-    videoSrc: menuExample,
+    videoSrc: questionExample,
   },
   {
     value: ExampleTabs.Test,
     title: 'Тестирование в реальном времени',
     text: 'Тесты по разделам, с помощью которых можно проверить знания после изучения материала',
-    videoSrc: menuExample,
+    videoSrc: testExample,
   },
   {
     value: ExampleTabs.AI,
     title: 'Подсказки от AI',
     text: 'Если что-то непонятно, бот, обученный на данных ресторана, уточняет контекст и даёт развёрнутый ответ',
-    videoSrc: menuExample,
+    videoSrc: aiExample,
   },
 ]
 </script>
