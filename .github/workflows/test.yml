@@ -75,7 +75,7 @@ jobs:
           key: ${{ env.KEY }}
           envs: TELEGRAM_BOT_TOKEN,TELEGRAM_CHAT_IDS
           script: |
-            sudo systemctl restart mybackend.service
+            sudo systemctl restart moxai_ru_backend.service
 
       # - name: Install SSH client
       #   run: |
