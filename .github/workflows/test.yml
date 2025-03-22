@@ -64,18 +64,24 @@ jobs:
           target: "${{ env.REMOTE_PATH }}/backend/"
           strip_components: 1
 
-      - name: Restart Backend Service
+      - name: Update Backend environment file
         uses: appleboy/ssh-action@v1.2.2
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_IDS: ${{ secrets.TELEGRAM_CHAT_IDS }}
         with:
           host: ${{ env.HOST }}
           username: ${{ env.USERNAME }}
           key: ${{ env.KEY }}
-          envs: TELEGRAM_BOT_TOKEN,TELEGRAM_CHAT_IDS
           script: |
-            sudo systemctl restart moxai_ru_backend.service
+            rm -f ${{ env.REMOTE_PATH }}/backend/.env
+            echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" > ${{ env.REMOTE_PATH }}/backend/.env
+            echo "TELEGRAM_CHAT_IDS=${{ secrets.TELEGRAM_CHAT_IDS }}" >> ${{ env.REMOTE_PATH }}/backend/.env
+
+      - name: Restart Backend Service
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ env.HOST }}
+          username: ${{ env.USERNAME }}
+          key: ${{ env.KEY }}
+          script: sudo systemctl restart moxai_ru_backend.service
 
       # - name: Install SSH client
       #   run: |
