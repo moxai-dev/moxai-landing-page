@@ -8,6 +8,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      HOST: ${{ secrets.REMOTE_HOST }}
+      USERNAME: ${{ secrets.REMOTE_USER }}
+      KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
 
     steps:
       - name: Checkout repository
@@ -18,61 +23,58 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Clear previous builds
-        uses: appleboy/ssh-action@v1.2.2
-        env:
-          WORKDIR_PATH: ${{ secrets.REMOTE_PATH }}
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          envs: WORKDIR_PATH
-          script: |
-            rm -rf $WORKDIR_PATH/backend
-            rm -rf $WORKDIR_PATH/frontend
-
-      - name: Build frontend
-        working-directory: ./frontend
+      - name: Build Frontend
+        working-directory: frontend
         run: |
           npm ci
           npm run build
 
-      - name: Build backend
-        working-directory: ./backend
+      - name: Install Backend dependencies
+        working-directory: backend
         run: |
           npm ci
 
-      - name: Copy frontend to server
+      - name: Clear Remote Directories
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: $HOST
+          username: $USERNAME
+          key: $KEY
+          script: |
+            rm -rf $REMOTE_PATH/frontend/*
+            rm -rf $REMOTE_PATH/backend/*
+
+      - name: Deploy Frontend Files
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          host: $HOST
+          username: $USERNAME
+          key: $KEY
           source: "./frontend/dist/*"
-          target: ${{ secrets.REMOTE_PATH }}
+          target: "$REMOTE_PATH/frontend/"
           strip_components: 1
 
-      - name: Copy backend to server
+      - name: Deploy Backend Files
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          host: $HOST
+          username: $USERNAME
+          key: $KEY
           source: "./backend/*"
-          target: ${{ secrets.REMOTE_PATH }}
+          target: "$REMOTE_PATH/backend/"
 
-      - name: Deploy backend
+      - name: Restart Backend Service
         uses: appleboy/ssh-action@v1.2.2
         env:
-          WORKDIR_PATH: ${{ secrets.REMOTE_PATH }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.REMOTE_PATH }}
-          TELEGRAM_CHAT_IDS: ${{ secrets.REMOTE_PATH }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_IDS: ${{ secrets.TELEGRAM_CHAT_IDS }}
         with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          envs: WORKDIR_PATH,TELEGRAM_BOT_TOKEN,TELEGRAM_CHAT_IDS
-          script: mv $WORKDIR_PATH/dist $WORKDIR_PATH/frontend
+          host: $HOST
+          username: $USERNAME
+          key: $KEY
+          envs: TELEGRAM_BOT_TOKEN,TELEGRAM_CHAT_IDS
+          script: |
+            sudo systemctl restart mybackend.service
 
       # - name: Install SSH client
       #   run: |

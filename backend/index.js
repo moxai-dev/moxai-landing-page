@@ -6,6 +6,9 @@ app.use(express.json());
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_IDS = process.env.TELEGRAM_CHAT_IDS.split(",");
 
+console.log(TELEGRAM_BOT_TOKEN);
+console.log(TELEGRAM_CHAT_IDS);
+
 app.post("/api/contact", async (req, res) => {
   const { name, contact, additionalInfo } = req.body;
 
