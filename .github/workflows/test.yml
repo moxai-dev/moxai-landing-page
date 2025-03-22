@@ -65,11 +65,13 @@ jobs:
         uses: appleboy/ssh-action@v1.2.2
         env:
           WORKDIR_PATH: ${{ secrets.REMOTE_PATH }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.REMOTE_PATH }}
+          TELEGRAM_CHAT_IDS: ${{ secrets.REMOTE_PATH }}
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          envs: WORKDIR_PATH
+          envs: WORKDIR_PATH,TELEGRAM_BOT_TOKEN,TELEGRAM_CHAT_IDS
           script: mv $WORKDIR_PATH/dist $WORKDIR_PATH/frontend
 
       # - name: Install SSH client

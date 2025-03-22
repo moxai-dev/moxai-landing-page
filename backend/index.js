@@ -1,19 +1,10 @@
 import express from "express";
-import "dotenv/config";
 
 const app = express();
 app.use(express.json());
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const chatIds = [
-  process.env.TELEGRAM_CHAT_ID_1,
-  process.env.TELEGRAM_CHAT_ID_2,
-  // process.env.TELEGRAM_CHAT_ID_3
-];
-
-app.get("/", (req, res) => {
-  return res.status(200).send("ok 2");
-});
+const TELEGRAM_CHAT_IDS = process.env.TELEGRAM_CHAT_IDS.split(",");
 
 app.post("/api/contact", async (req, res) => {
   const { name, contact, additionalInfo } = req.body;
@@ -29,7 +20,7 @@ app.post("/api/contact", async (req, res) => {
   const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
   try {
-    const sendPromises = chatIds.map((chatId) =>
+    const sendPromises = TELEGRAM_CHAT_IDS.map((chatId) =>
       fetch(telegramUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
