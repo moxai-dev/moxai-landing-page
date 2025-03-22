@@ -1,5 +1,5 @@
 name: Deploy moxai.ru
-
+#
 on:
   push:
     branches:
