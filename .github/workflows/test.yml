@@ -51,7 +51,7 @@ jobs:
           username: ${{ env.USERNAME }}
           key: ${{ env.KEY }}
           source: "./frontend/dist/*"
-          target: "$REMOTE_PATH/frontend/"
+          target: "${{ env.REMOTE_PATH }}/frontend/"
           strip_components: 1
 
       - name: Deploy Backend Files
@@ -61,7 +61,7 @@ jobs:
           username: ${{ env.USERNAME }}
           key: ${{ env.KEY }}
           source: "./backend/*"
-          target: "$REMOTE_PATH/backend/"
+          target: "${{ env.REMOTE_PATH }}/backend/"
 
       - name: Restart Backend Service
         uses: appleboy/ssh-action@v1.2.2
