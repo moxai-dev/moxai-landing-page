@@ -70,9 +70,7 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           envs: WORKDIR_PATH
-          script: |
-            mv $WORKDIR_PATH/dist $WORKDIR_PATH/frontend
-            systemctl restart moxai_ru_backend.service
+          script: mv $WORKDIR_PATH/dist $WORKDIR_PATH/frontend
 
       # - name: Install SSH client
       #   run: |

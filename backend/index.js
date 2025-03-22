@@ -12,7 +12,7 @@ const chatIds = [
 ];
 
 app.get("/", (req, res) => {
-  return res.status(200).send("ok");
+  return res.status(200).send("ok 2");
 });
 
 app.post("/api/contact", async (req, res) => {
