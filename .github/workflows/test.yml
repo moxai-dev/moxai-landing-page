@@ -37,9 +37,9 @@ jobs:
       - name: Clear Remote Directories
         uses: appleboy/ssh-action@v1.2.2
         with:
-          host: $HOST
-          username: $USERNAME
-          key: $KEY
+          host: ${{ env.HOST }}
+          username: ${{ env.USERNAME }}
+          key: ${{ env.KEY }}
           script: |
             rm -rf $REMOTE_PATH/frontend/*
             rm -rf $REMOTE_PATH/backend/*
@@ -47,9 +47,9 @@ jobs:
       - name: Deploy Frontend Files
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: $HOST
-          username: $USERNAME
-          key: $KEY
+          host: ${{ env.HOST }}
+          username: ${{ env.USERNAME }}
+          key: ${{ env.KEY }}
           source: "./frontend/dist/*"
           target: "$REMOTE_PATH/frontend/"
           strip_components: 1
@@ -57,9 +57,9 @@ jobs:
       - name: Deploy Backend Files
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: $HOST
-          username: $USERNAME
-          key: $KEY
+          host: ${{ env.HOST }}
+          username: ${{ env.USERNAME }}
+          key: ${{ env.KEY }}
           source: "./backend/*"
           target: "$REMOTE_PATH/backend/"
 
@@ -69,9 +69,9 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_IDS: ${{ secrets.TELEGRAM_CHAT_IDS }}
         with:
-          host: $HOST
-          username: $USERNAME
-          key: $KEY
+          host: ${{ env.HOST }}
+          username: ${{ env.USERNAME }}
+          key: ${{ env.KEY }}
           envs: TELEGRAM_BOT_TOKEN,TELEGRAM_CHAT_IDS
           script: |
             sudo systemctl restart mybackend.service
