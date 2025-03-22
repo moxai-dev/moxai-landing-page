@@ -113,9 +113,9 @@ const tabPanelsData: TabPanelData[] = [
               </div>
 
               <div class="relative shrink-0">
-                <img class="max-xs:w-52 relative z-10 h-100 md:h-132" :src="iphoneFrame" alt="" />
+                <img class="relative z-10 h-100 md:h-132" :src="iphoneFrame" alt="" />
                 <video
-                  class="xs:h-[352px] absolute top-[26px] left-[10px] h-[372px]"
+                  class="absolute top-[26px] left-[10px] h-[352px] md:top-[35px] md:left-[13px] md:h-[464px]"
                   autoplay
                   loop
                   playsinline
