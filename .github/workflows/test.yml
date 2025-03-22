@@ -44,37 +44,37 @@ jobs:
             rm -rf ${{ env.REMOTE_PATH }}/frontend/*
             rm -rf ${{ env.REMOTE_PATH }}/backend/*
 
-      # - name: Deploy Frontend Files
-      #   uses: appleboy/scp-action@v0.1.7
-      #   with:
-      #     host: ${{ env.HOST }}
-      #     username: ${{ env.USERNAME }}
-      #     key: ${{ env.KEY }}
-      #     source: "./frontend/dist/*"
-      #     target: "$REMOTE_PATH/frontend/"
-      #     strip_components: 1
+      - name: Deploy Frontend Files
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ env.HOST }}
+          username: ${{ env.USERNAME }}
+          key: ${{ env.KEY }}
+          source: "./frontend/dist/*"
+          target: "$REMOTE_PATH/frontend/"
+          strip_components: 1
 
-      # - name: Deploy Backend Files
-      #   uses: appleboy/scp-action@v0.1.7
-      #   with:
-      #     host: ${{ env.HOST }}
-      #     username: ${{ env.USERNAME }}
-      #     key: ${{ env.KEY }}
-      #     source: "./backend/*"
-      #     target: "$REMOTE_PATH/backend/"
+      - name: Deploy Backend Files
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ env.HOST }}
+          username: ${{ env.USERNAME }}
+          key: ${{ env.KEY }}
+          source: "./backend/*"
+          target: "$REMOTE_PATH/backend/"
 
-      # - name: Restart Backend Service
-      #   uses: appleboy/ssh-action@v1.2.2
-      #   env:
-      #     TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-      #     TELEGRAM_CHAT_IDS: ${{ secrets.TELEGRAM_CHAT_IDS }}
-      #   with:
-      #     host: ${{ env.HOST }}
-      #     username: ${{ env.USERNAME }}
-      #     key: ${{ env.KEY }}
-      #     envs: TELEGRAM_BOT_TOKEN,TELEGRAM_CHAT_IDS
-      #     script: |
-      #       sudo systemctl restart mybackend.service
+      - name: Restart Backend Service
+        uses: appleboy/ssh-action@v1.2.2
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_IDS: ${{ secrets.TELEGRAM_CHAT_IDS }}
+        with:
+          host: ${{ env.HOST }}
+          username: ${{ env.USERNAME }}
+          key: ${{ env.KEY }}
+          envs: TELEGRAM_BOT_TOKEN,TELEGRAM_CHAT_IDS
+          script: |
+            sudo systemctl restart mybackend.service
 
       # - name: Install SSH client
       #   run: |
