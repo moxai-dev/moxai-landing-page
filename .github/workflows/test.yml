@@ -41,8 +41,8 @@ jobs:
           username: ${{ env.USERNAME }}
           key: ${{ env.KEY }}
           script: |
-            rm -rf $REMOTE_PATH/frontend/*
-            rm -rf $REMOTE_PATH/backend/*
+            rm -rf ${{ env.REMOTE_PATH }}/frontend/*
+            rm -rf ${{ env.REMOTE_PATH }}/backend/*
 
       # - name: Deploy Frontend Files
       #   uses: appleboy/scp-action@v0.1.7
