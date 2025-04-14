@@ -6,11 +6,11 @@ import TabPanels from 'primevue/tabpanels'
 import TabPanel from 'primevue/tabpanel'
 import AppAnchorLink from '@/components/AppAnchorLink.vue'
 import iphoneFrame from '@/assets/iphone-frame.png'
-import functionExample from '@/assets/example-functions.mp4'
-import menuExample from '@/assets/example-menu.mp4'
-import questionExample from '@/assets/example-question.mp4'
-import testExample from '@/assets/example-test.mp4'
-import aiExample from '@/assets/example-AI.mp4'
+import functionExample from '@/assets/example-bot-functions.mp4'
+import menuExample from '@/assets/example-bot-menu.mp4'
+import questionExample from '@/assets/example-bot-question.mp4'
+import testExample from '@/assets/example-bot-test.mp4'
+import aiExample from '@/assets/example-bot-AI.mp4'
 import { AnchorLinkEnum } from '@/enums/AnchorLinkEnum'
 
 enum ExampleTabs {
@@ -74,15 +74,17 @@ const tabPanelsData: TabPanelData[] = [
 </script>
 
 <template>
-  <section class="relative bg-linear-65 from-emerald-500 from-40% to-lime-500 text-slate-100">
+  <section class="relative text-slate-100">
     <div class="mx-auto max-w-132 md:max-w-184 lg:max-w-236 xl:max-w-6xl">
       <!-- bg-gradient-to-r from-emerald-500 to-emerald-600 -->
       <!-- :class="`bg-[url(${gradientBg})]`" -->
       <!-- <img class="absolute top-0 right-0 bottom-0 left-0 -z-10" :src="gradientBg" alt="" /> -->
 
-      <AppAnchorLink class="top-0" :id="AnchorLinkEnum.Examples" />
+      <AppAnchorLink class="top-0" :id="AnchorLinkEnum.ExamplesBot" />
 
-      <h2 class="mb-4 text-center text-2xl font-semibold text-white lg:text-3xl">Примеры работы</h2>
+      <h2 class="mb-4 text-center text-2xl font-semibold text-white lg:text-3xl">
+        Примеры работы Telegram&nbsp;бота
+      </h2>
 
       <Tabs class="tabs" scrollable :value="ExampleTabs.Functional">
         <TabList
